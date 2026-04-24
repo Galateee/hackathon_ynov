@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: techcorp-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    restart: unless-stopped
+
+  frontend:
+    build: 
+      context: ./frontend
+      args:
+        # Remplacez <VOTRE_IP_PUBLIQUE_AWS> par l'IP publique de votre instance EC2
+        - REACT_APP_API_URL=http://52.47.155.186:5000
+    container_name: techcorp-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

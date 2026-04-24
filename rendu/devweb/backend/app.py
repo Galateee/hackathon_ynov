@@ -6,13 +6,10 @@ Multi-mode backend: supports Local, Ollama, and Triton inference
 
 import os
 import json
-import torch
 import requests
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
-from peft import PeftModel
 
 # Load environment variables
 load_dotenv()
@@ -45,6 +42,10 @@ def initialize_local_model():
         return True
     
     try:
+        import torch
+        from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+        from peft import PeftModel
+
         print("🤖 Initializing local Phi-3.5 model...")
         
         # Load tokenizer
@@ -192,6 +193,8 @@ def chat():
 def call_local_model(message, max_tokens=150):
     """Call local model for response"""
     try:
+        import torch
+
         if not local_model_loaded:
             print("❌ Local model not initialized")
             return None
