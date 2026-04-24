@@ -4,8 +4,8 @@ const cors = require("cors");
 const app = express();
 
 const PORT = Number(process.env.PORT || 3001);
-const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || "http://13.222.248.247:11434";
-const DEFAULT_MODEL = process.env.OLLAMA_MODEL || "phi3.5:latest";
+const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || "http://48.220.35.222:11434";
+const DEFAULT_MODEL = process.env.OLLAMA_MODEL || "phi3-financial";
 
 app.use(cors());
 app.use(express.json({ limit: "2mb" }));
