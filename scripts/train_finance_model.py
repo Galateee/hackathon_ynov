@@ -17,7 +17,7 @@ from datasets import Dataset
 import random
 
 class FinanceModelTrainer:
-    def __init__(self, model_name="microsoft/Phi-3-mini-4k-instruct", dataset_path="../datasets/finance_dataset_final.json"):
+    def __init__(self, model_name="microsoft/Phi-3-mini-4k-instruct", dataset_path="../datasets/finance_dataset_clean.json"):
         """
         Initialize trainer for financial AI assistant
         Uses Phi-3-mini for efficient training on consumer hardware
