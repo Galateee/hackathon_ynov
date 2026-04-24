@@ -6,8 +6,15 @@ services:
     container_name: techcorp-backend
     ports:
       - "5000:5000"
-    env_file:
-      - ./backend/.env
+    environment:
+      - INFERENCE_MODE=ollama
+      - INFERENCE_SERVER=http://48.220.35.222:11434
+      - MODEL_NAME=phi3-financial
+      - BASE_MODEL_NAME=microsoft/Phi-3-mini-4k-instruct
+      - MODEL_PATH=../../models/phi3_financial
+      - BACKEND_PORT=5000
+      - DEBUG=True
+      - REQUEST_TIMEOUT=600
     restart: unless-stopped
 
   frontend:
